@@ -1,0 +1,40 @@
+*{
+  font-size: 14px;
+  font-family: Arial, sans-serif, "Microsoft Yahei"
+}
+
+.ant-card{
+  display: block;
+  float: left;
+}
+.ant-card-head-title{
+  font-weight: 900;
+}
+.content{
+  padding: 15px;
+}
+a{
+  text-decoration: none;
+}
+ul,li{
+  list-style: none;
+}
+a{
+  padding: 10px 25px; 
+  display: block;
+  float: left;
+  text-align: center;
+  margin-left: 15px;
+  line-height: 2em;
+}
+a{
+  background: #e2e2e2;
+}
+.content{
+  display: block;
+  clear: both;
+}
+canvas{
+  display: block;
+  clear: both;
+}
