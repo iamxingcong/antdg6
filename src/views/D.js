@@ -1,13 +1,13 @@
-import React  from 'react';
- 
+import React from 'react';
+
 
 import G6 from '@antv/g6';
 
 class D extends React.Component {
 
- 
 
-  
+
+
   componentDidMount() {
 
     async function getRates() {
@@ -15,11 +15,11 @@ class D extends React.Component {
       const response = await fetch('https://gw.alipayobjects.com/os/antvdemo/assets/data/relations.json')
 
       const postdata = await response.json()
- 
- 
 
-     var graph = new G6.Graph({
-        container:document.getElementById('oxt'),
+
+
+      var graph = new G6.Graph({
+        container: document.getElementById('oxt'),
         width: 1500,
         height: 1900,
 
@@ -73,18 +73,18 @@ class D extends React.Component {
       graph.render();
 
       console.log("d")
-     
+
     }
 
     getRates();
 
 
-  } 
+  }
 
- render(){
-  return <div className='canvas' id="oxt"></div>
- }
-  
+  render() {
+    return <div className='canvas' id="oxt"></div>
+  }
+
 }
 
 export default D
