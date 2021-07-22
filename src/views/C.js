@@ -1,26 +1,22 @@
-import React, { useEffect, useState } from 'react';
-import ReactDOM from 'react-dom';
+import React  from 'react';
+ 
 
 import G6 from '@antv/g6';
 
-function C() {
-  const ref = React.useRef(null);
-  let graph = null;
-  
-
-  const [treeData, setItems] = useState({});
+class C extends React.Component {
  
-  useEffect(() => {
+  
+  componentDidMount() {
   
     async function getRates() {
       const response = await fetch('https://gw.alipayobjects.com/os/basement_prod/6cae02ab-4c29-44b2-b1fd-4005688febcb.json')
       const postdata = await response.json()
-      setItems(postdata)
+       
  
 
         
-      graph = new G6.Graph({
-        container: ReactDOM.findDOMNode(ref.current),
+     var graph = new G6.Graph({
+        container: document.getElementById('axt'),
         width: 1000,
         height: 600,
         fitView: true,
@@ -40,10 +36,13 @@ function C() {
       
  
    
-  }, []);
-  console.log('c')
-    console.log(treeData)
+  } 
+  
+  render(){
+    return <div className='canvas' id="axt"></div>;
+  }
+
     
-  return <div className='canvas' ref={ref}></div>;
+  
 }
 export default C

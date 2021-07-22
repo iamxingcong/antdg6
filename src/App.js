@@ -6,6 +6,8 @@ import A from "./views/A.js"
 import B from "./views/B.js"
 import C from "./views/C.js"
 import D from "./views/D.js"
+import E from "./views/E.js"
+import Graph from "./views/Graph.js"
 import Z from "./views/Z.js"
 import {
   BrowserRouter as Router,
@@ -35,6 +37,12 @@ export default function App() {
               <Link to="/D"> d </Link>
             </li>
             <li>
+              <Link to="/E"> e </Link>
+            </li>
+            <li>
+              <Link to="/Graph">  Graph </Link>
+            </li>
+            <li>
               <Link to="/Z">  z </Link>
             </li>
           </ul>
@@ -56,7 +64,12 @@ export default function App() {
           <Route path="/D">
             <D />
           </Route>
-
+          <Route path="/E">
+            <E />
+          </Route>
+          <Route path="/Graph">
+            <Graph />
+          </Route>
 
           <Route path="/Z">
             <Z />

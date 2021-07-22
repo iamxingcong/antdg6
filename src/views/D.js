@@ -1,51 +1,40 @@
-import React, { useEffect, useState } from 'react';
-import ReactDOM from 'react-dom';
+import React  from 'react';
+ 
 
 import G6 from '@antv/g6';
 
+class D extends React.Component {
 
-const D = () => {
+ 
 
-  let graph = null
-  const ref = React.useRef(null);
-
-  const [treeData, setItems] = useState({});
-
-
-
-  useEffect(() => {
+  
+  componentDidMount() {
 
     async function getRates() {
 
       const response = await fetch('https://gw.alipayobjects.com/os/antvdemo/assets/data/relations.json')
 
       const postdata = await response.json()
-      setItems(postdata)
+ 
+ 
 
-
-
-      console.log(treeData)
-
-
-
-
-      graph = new G6.Graph({
-        container: ReactDOM.findDOMNode(ref.current),
+     var graph = new G6.Graph({
+        container:document.getElementById('oxt'),
         width: 1500,
-        height: 900,
+        height: 1900,
 
 
         layout: {
           type: 'concentric',
-          center: [500, 400],     // 可选，
-          linkDistance: 150,         // 可选，边长
+          center: [600, 700],     // 可选，
+          linkDistance: 30,         // 可选，边长
           preventOverlap: true,     // 可选，必须配合 nodeSize
-          nodeSize: 30,             // 可选
-          sweep: 10,                // 可选
+          nodeSize: 7,             // 可选
+          sweep: 6,                // 可选
           equidistant: false,       // 可选
           startAngle: 0,            // 可选
           clockwise: false,         // 可选
-          maxLevelDiff: 40,         // 可选
+          maxLevelDiff: 10,         // 可选
           sortBy: 'degree',         // 可选
           workerEnabled: true
 
@@ -54,7 +43,7 @@ const D = () => {
         animate: true,
         modes: 'zoom-canvas',
         defaultNode: {
-          size: 26,
+          size: 56,
           anchorPoints: [
             [0, 0.5],
             [1, 0.5],
@@ -83,16 +72,19 @@ const D = () => {
       graph.data(postdata);
       graph.render();
 
-
+      console.log("d")
+     
     }
 
     getRates();
 
 
-  }, [])
+  } 
 
-
-  return <div className='canvas' ref={ref}></div>;
+ render(){
+  return <div className='canvas' id="oxt"></div>
+ }
+  
 }
 
 export default D

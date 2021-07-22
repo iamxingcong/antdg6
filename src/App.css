@@ -38,3 +38,13 @@ canvas{
   display: block;
   clear: both;
 }
+
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+canvas {
+  border: 1px solid gray;
+  margin: 2px;
+}
