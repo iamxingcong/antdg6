@@ -1,51 +1,74 @@
-import React  from "react";
+import React from "react";
 import G6 from "@antv/g6";
 
 class Graph extends React.Component {
- 
+
   constructor(props) {
     super(props);
     this.state = {
-      
-      
-      data: {
-        nodes: [
-          { id: "node1", label: "1" },
-          { id: "node2", label: "2" }
-        ],
-        edges: []
-      }
-     
+
+      items:[]
+       
+
     };
   }
-   
-  
+
+
   componentDidMount() {
 
- 
-   var graph = new G6.Graph({
-      container: document.getElementById('axt'),
-      width: 300,
-      height: 300,
-      modes: {
-        default: ["drag-canvas", "zoom-canvas", "drag-node"]
-      }
-    });
-    graph.data(this.state.data);
-    graph.render();
 
-     
+    const getRates = async () => {
+
+      const response = await fetch('http://test.api.big.pcg.com/capacity-model/relation-tree?type=news/Inews')
+
+      const postdata = await response.json()
+
+      this.setState({
+        isLoaded: true,
+        items: postdata.data
+      });
+
+
+      console.log(this.state.items)
+
+      
+      let graph = new G6.Graph({
+        container: document.getElementById('axt'),
+        width: window.screen.width,
+        height: 1300,
+        modes: {
+          default: ["drag-canvas", "zoom-canvas", "drag-node"]
+        }
+      });
+
+      graph.node(function (node) {
+        return {
+          label: node.avgName,
+          labelCfg: {
+            offset: 10,
+            position: node.children && node.children.length > 0 ? 'left' : 'right',
+          },
+        };
+      });
+
+
+      graph.data(this.state.items);
+      graph.render();
+
+    }
+
+    getRates();
   }
 
-   render(){
+  render() {
     return (
-    
-        
-        <div id="axt"></div>
- 
+
+
+      <div id="axt"></div>
+
     );
-   }
- 
+  }
+
 };
 
 export default Graph;

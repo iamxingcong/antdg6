@@ -9,6 +9,7 @@ import D from "./views/D.js"
 import E from "./views/E.js"
 import Graph from "./views/Graph.js"
 import Z from "./views/Z.js"
+import CardNode from "./views/CardNode.js"
 import {
   BrowserRouter as Router,
   Switch,
@@ -45,6 +46,9 @@ export default function App() {
             <li>
               <Link to="/Z">  z </Link>
             </li>
+            <li>
+              <Link to="/CardNode"> CardNode </Link>
+            </li>
           </ul>
         </nav>
 
@@ -70,7 +74,9 @@ export default function App() {
           <Route path="/Graph">
             <Graph />
           </Route>
-
+          <Route path="/CardNode"> 
+            <CardNode />
+          </Route>
           <Route path="/Z">
             <Z />
           </Route>
