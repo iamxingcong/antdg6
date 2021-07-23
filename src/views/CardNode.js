@@ -9,7 +9,7 @@ class CardNode extends React.Component {
         this.state = {
 
             items: [],
-            alt: {}
+            alt: ''
 
 
         };
@@ -209,10 +209,10 @@ class CardNode extends React.Component {
 
             });
 
-
-
-
         }
+
+
+
 
         getRates();
 
@@ -221,15 +221,15 @@ class CardNode extends React.Component {
     render() {
         return (
 
-            <div className="content"> 
+            <div className="content">
                 <h1>
                     {this.state.alt.name ? this.state.alt.name : "pls click node"}
                 </h1>
                 <div>
-                  { JSON.stringify(this.state.alt ) }
+                    {this.state.alt !== '' ? JSON.stringify(this.state.alt) : "点击"}
 
                 </div>
-                
+
                 <div id="cdn" className="content"> cardNode </div>
             </div>
         )
