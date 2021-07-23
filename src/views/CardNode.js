@@ -46,11 +46,12 @@ class CardNode extends React.Component {
                             attrs: {
                                 x: 0,
                                 y: 0,
-                                width: 400,
-                                height: 220,
+                                width: 500,
+                                height: 320,
                                 stroke: color,
                                 radius: r,
                             },
+                          
                             name: 'main-box',
                             draggable: true,
                         });
@@ -59,7 +60,7 @@ class CardNode extends React.Component {
                             attrs: {
                                 x: 0,
                                 y: 0,
-                                width: 400,
+                                width: 500,
                                 height: 50,
                                 fill: color,
                                 radius: [r, r, 0, 0],
@@ -86,13 +87,26 @@ class CardNode extends React.Component {
                             attrs: {
                                 textBaseline: 'top',
                                 y: 22,
-                                x: 116,
+                                x: 216,
                                 lineHeight: 60,
                                 text: cfg.platform,
                                 fill: '#000',
                             },
                             name: 'title',
                         });
+
+                        group.addShape('text', {
+                            attrs: {
+                                textBaseline: 'top',
+                                y: 22,
+                                x: 316,
+                                lineHeight: 60,
+                                text: cfg.avgName + ":"+ cfg.avgTime,
+                                fill: '#000',
+                            },
+                            name: 'title',
+                        });
+
 
                         if (cfg.nodeLevel > 0) {
                             group.addShape('marker', {
@@ -115,10 +129,10 @@ class CardNode extends React.Component {
                             group.addShape('text', {
                                 attrs: {
                                     textBaseline: 'top',
-                                    y: 115,
+                                    y: 85,
                                     x: 24 + index * 60,
                                     lineHeight: 40,
-                                    text: item.zoneName,
+                                    text: item.zoneName +"--?1--",
                                     fill: 'rgba(0,0,0, 0.4)',
                                 },
                                 name: item.zone,
@@ -128,40 +142,29 @@ class CardNode extends React.Component {
                             group.addShape('text', {
                                 attrs: {
                                     textBaseline: 'top',
-                                    y: 102,
-                                    x: 24 + index * 60,
+                                    y: 112,
+                                    x: 34 + index * 60,
                                     lineHeight: 40,
-                                    text: item.cpu + "-" + item.zone,
+                                    text: item.cpu + "--?2--" + item.zone,
                                     fill: '#595959',
                                 },
                                 name: item.zoneName,
                             });
 
+                         
                             // value text
                             group.addShape('text', {
                                 attrs: {
                                     textBaseline: 'top',
-                                    y: 132,
-                                    x: 24 + index * 60,
+                                    y: 112,
+                                    x: 244 + index * 60,
                                     lineHeight: 40,
-                                    text: item.failName + "-" + item.failPct,
+                                    text: item.judge + "--?3--" + item.value,
                                     fill: '#595959',
                                 },
-                                name: item.date,
+                                name: item.judge,
                             });
-
-
-                            group.addShape('text', {
-                                attrs: {
-                                    textBaseline: 'top',
-                                    y: 132,
-                                    x: 24 + index * 60,
-                                    lineHeight: 40,
-                                    text: item.totalName + "-" + item.x,
-                                    fill: '#595959',
-                                },
-                                name: item.qpsName,
-                            });
+                                                        
                         });
                         return shape;
                     },
@@ -186,54 +189,8 @@ class CardNode extends React.Component {
                 fitView: true,
             });
 
-            const data = {
-                nodes: [
-                    {
-                        title: 'node1',
-                        error: true,
-                        nodeType: 'a',
-                        id: 'node1',
-                        nodeLevel: 2,
-                        panels: [
-                            { title: '成功率', value: '11%' },
-                            { title: '耗时', value: '111' },
-                            { title: '错误数', value: '111' },
-                        ],
-                        x: 100,
-                        y: 100,
-                    },
-                    {
-                        title: 'node2',
-                        error: false,
-                        nodeType: 'b',
-                        id: 'node2',
-                        nodeLevel: 0,
-                        panels: [
-                            { title: '成功率', value: '11%' },
-                            { title: '耗时', value: '111' },
-                            { title: '错误数', value: '111' },
-                        ],
-                        x: 100,
-                        y: 200,
-                    },
-                    {
-                        title: 'node3',
-                        error: false,
-                        nodeType: 'a',
-                        id: 'node3',
-                        nodeLevel: 3,
-                        panels: [
-                            { title: '成功率', value: '11%' },
-                            { title: '耗时', value: '111' },
-                            { title: '错误数', value: '111' },
-                        ],
-                        collapse: true,
-                        x: 100,
-                        y: 300,
-                    },
-                ],
-            };
-            console.log(data)
+           
+    
 
 
             graph.data(this.state.items);
