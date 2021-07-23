@@ -35,7 +35,29 @@ class CardNode extends React.Component {
             console.log(this.state.items)
 
 
-
+            G6.registerBehavior('activate-node', {
+                getDefaultCfg() {
+                    return {
+                      multiple: true
+                    };
+                  },
+                getEvents() {
+                  return {
+                    'node:click': 'onNodeClick',
+                    'edge:click': 'onEdgeClick',
+                    mousemove: 'onMouseMove',
+                  };
+                },
+                onNodeClick(evt) {
+                 console.log('click')
+                },
+                onEdgeClick(evt) {
+                  console.log("lick edge")
+                },
+                onMouseMove(evt) {
+                  console.log("mouse")
+                },
+              });
 
             G6.registerNode(
                 'card-node',
@@ -172,10 +194,14 @@ class CardNode extends React.Component {
                     preventOverlap: true,
                     fontSize: 45,
                 },
-
                 modes: {
-                    default: ['drag-canvas', 'drag-node'],
-                },
+                    default: [
+                    // 支持的 behavior
+                   { default: ['drag-canvas', 'zoom-canvas','drag-node']},
+                   { edit: ['click-select']},
+                    'activate-node' ]
+                  },
+                 
                 defaultNode: {
                     type: 'card-node',
 
