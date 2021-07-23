@@ -17,10 +17,30 @@ class C extends React.Component {
         
      var graph = new G6.Graph({
         container: document.getElementById('axt'),
-        width: 1000,
+        width: window.screen.width,
         height: 600,
         fitView: true,
         fitViewPadding: [20, 40, 50, 20],
+        modes: {
+          default: ["drag-canvas", "zoom-canvas", "drag-node"]
+        },
+        layout: {
+          type: 'gForce',
+          center: [ 300, 300 ],     // 可选，默认为图的中心
+          linkDistance: 50,         // 可选，边长
+          nodeStrength: 130,         // 可选
+          edgeStrength: 0.1,        // 可选
+          nodeSize: 130,             // 可选
+          onTick: () => {           // 可选
+            console.log('ticking');
+          },
+          onLayoutEnd: () => {      // 可选
+            console.log('force layout done');
+          },
+          workerEnabled: true,      // 可选，开启 web-worker
+          gpuEnabled: true          // 可选，开启 GPU 并行计算，G6 4.0 支持
+          
+        }
       
       });
 

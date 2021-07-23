@@ -8,7 +8,8 @@ class CardNode extends React.Component {
         super(props);
         this.state = {
 
-            items: []
+            items: [],
+            alt: {}
 
 
         };
@@ -26,7 +27,7 @@ class CardNode extends React.Component {
             const postdata = await response.json()
 
             this.setState({
-                isLoaded: true,
+
                 items: postdata.data
             });
 
@@ -163,7 +164,7 @@ class CardNode extends React.Component {
                 container: document.getElementById('cdn'),
                 width: window.screen.width,
                 height: 1900,
-                
+
                 layout: {
                     type: 'force',
                     nodeSpacing: 30,
@@ -171,7 +172,7 @@ class CardNode extends React.Component {
                     preventOverlap: true,
                     fontSize: 45,
                 },
-                
+
                 modes: {
                     default: ['drag-canvas', 'drag-node'],
                 },
@@ -182,13 +183,13 @@ class CardNode extends React.Component {
                 defaultEdge: {
                     type: 'polyline',
                     style: {
-                      radius: 20,
-                      offset: 45,
-                      endArrow: true,
-                      lineWidth: 1,
-                      stroke: '#C2C8D5',
+                        radius: 20,
+                        offset: 45,
+                        endArrow: true,
+                        lineWidth: 1,
+                        stroke: '#C2C8D5',
                     },
-                  },
+                },
                 fitView: true,
             });
 
@@ -199,6 +200,19 @@ class CardNode extends React.Component {
             graph.data(this.state.items);
             graph.render();
 
+
+            graph.on('node:click', (evt) => {
+                const item = evt.item; // 被操作的节点 item
+                alert(item._cfg.model.name)
+
+
+                this.setState({ alt: item._cfg.model });
+
+            });
+
+
+
+
         }
 
         getRates();
@@ -206,7 +220,13 @@ class CardNode extends React.Component {
     }
 
     render() {
-        return <div id="cdn" className="content"> cardNode </div>
+        return (
+
+            <div>
+                { JSON.stringify(this.state.alt)}
+                <div id="cdn" className="content"> cardNode </div>
+            </div>
+        )
     }
 
 

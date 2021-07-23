@@ -36,7 +36,8 @@ class E extends React.Component {
         height: 1300,
         modes: {
           default: ["drag-canvas", "zoom-canvas", "drag-node"]
-        }
+        },
+        
       });
 
       
