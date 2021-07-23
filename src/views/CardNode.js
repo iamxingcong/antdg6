@@ -50,6 +50,7 @@ class CardNode extends React.Component {
                                 height: 320,
                                 stroke: color,
                                 radius: r,
+
                             },
 
                             name: 'main-box',
@@ -64,7 +65,9 @@ class CardNode extends React.Component {
                                 height: 50,
                                 fill: color,
                                 radius: [r, r, 0, 0],
+
                             },
+
                             name: 'title-box',
                             draggable: true,
                         });
@@ -88,14 +91,16 @@ class CardNode extends React.Component {
                         if (cfg.nodeLevel > 0) {
                             group.addShape('marker', {
                                 attrs: {
-                                    x: 9184,
+                                    x: 84,
                                     y: 170,
                                     r: 126,
                                     cursor: 'pointer',
                                     symbol: cfg.collapse ? G6.Marker.expand : G6.Marker.collapse,
                                     stroke: '#666',
                                     lineWidth: 2,
+
                                 },
+
                                 name: 'collapse-icon',
                             });
                         }
@@ -158,14 +163,32 @@ class CardNode extends React.Component {
                 container: document.getElementById('cdn'),
                 width: window.screen.width,
                 height: 1900,
-                // translate the graph to align the canvas's center, support by v3.5.1
-                fitCenter: true,
+                
+                layout: {
+                    type: 'force',
+                    nodeSpacing: 30,
+                    nodeSize: 500,
+                    preventOverlap: true,
+                    fontSize: 45,
+                },
+                
                 modes: {
                     default: ['drag-canvas', 'drag-node'],
                 },
                 defaultNode: {
                     type: 'card-node',
+
                 },
+                defaultEdge: {
+                    type: 'polyline',
+                    style: {
+                      radius: 20,
+                      offset: 45,
+                      endArrow: true,
+                      lineWidth: 1,
+                      stroke: '#C2C8D5',
+                    },
+                  },
                 fitView: true,
             });
 
