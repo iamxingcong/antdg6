@@ -55,7 +55,7 @@ class CardNode extends React.Component {
                   console.log("lick edge")
                 },
                 onMouseMove(evt) {
-                  console.log("mouse")
+                //  console.log("mouse")
                 },
               });
 
@@ -197,7 +197,7 @@ class CardNode extends React.Component {
                 modes: {
                     default: [
                     // 支持的 behavior
-                   { default: ['drag-canvas', 'zoom-canvas','drag-node']},
+                   { default: ['drag-canvas', 'drag-node', 'zoom-canvas']},
                    { edit: ['click-select']},
                     'activate-node' ]
                   },
