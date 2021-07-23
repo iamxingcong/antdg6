@@ -51,7 +51,7 @@ class CardNode extends React.Component {
                                 stroke: color,
                                 radius: r,
                             },
-                          
+
                             name: 'main-box',
                             draggable: true,
                         });
@@ -74,11 +74,12 @@ class CardNode extends React.Component {
                         group.addShape('text', {
                             attrs: {
                                 textBaseline: 'top',
-                                y: 22,
+                                y: 12,
                                 x: 16,
                                 lineHeight: 60,
                                 text: cfg.name,
                                 fill: '#000',
+                                fontSize: 30
                             },
                             name: 'title',
                         });
@@ -101,7 +102,7 @@ class CardNode extends React.Component {
                                 y: 22,
                                 x: 316,
                                 lineHeight: 60,
-                                text: cfg.avgName + ":"+ cfg.avgTime,
+                                text: cfg.avgName + ":" + cfg.avgTime,
                                 fill: '#000',
                             },
                             name: 'title',
@@ -130,10 +131,11 @@ class CardNode extends React.Component {
                                 attrs: {
                                     textBaseline: 'top',
                                     y: 85,
-                                    x: 24 + index * 60,
+                                    x: 24 + index * 190,
                                     lineHeight: 40,
-                                    text: item.zoneName +"--?1--",
+                                    text: item.zoneName + "--?1--",
                                     fill: 'rgba(0,0,0, 0.4)',
+                                    fontSize: 28
                                 },
                                 name: item.zone,
                             });
@@ -142,8 +144,8 @@ class CardNode extends React.Component {
                             group.addShape('text', {
                                 attrs: {
                                     textBaseline: 'top',
-                                    y: 112,
-                                    x: 34 + index * 60,
+                                    y: 142,
+                                    x: 34 + index * 190,
                                     lineHeight: 40,
                                     text: item.cpu + "--?2--" + item.zone,
                                     fill: '#595959',
@@ -151,20 +153,20 @@ class CardNode extends React.Component {
                                 name: item.zoneName,
                             });
 
-                         
+
                             // value text
                             group.addShape('text', {
                                 attrs: {
                                     textBaseline: 'top',
-                                    y: 112,
-                                    x: 244 + index * 60,
+                                    y: 172,
+                                    x: 44 + index * 160,
                                     lineHeight: 40,
                                     text: item.judge + "--?3--" + item.value,
                                     fill: '#595959',
                                 },
                                 name: item.judge,
                             });
-                                                        
+
                         });
                         return shape;
                     },
@@ -189,8 +191,8 @@ class CardNode extends React.Component {
                 fitView: true,
             });
 
-           
-    
+
+
 
 
             graph.data(this.state.items);
