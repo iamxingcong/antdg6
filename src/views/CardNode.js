@@ -83,42 +83,18 @@ class CardNode extends React.Component {
                             },
                             name: 'title',
                         });
-                        // title text
-                        group.addShape('text', {
-                            attrs: {
-                                textBaseline: 'top',
-                                y: 22,
-                                x: 216,
-                                lineHeight: 60,
-                                text: cfg.platform,
-                                fill: '#000',
-                            },
-                            name: 'title',
-                        });
-
-                        group.addShape('text', {
-                            attrs: {
-                                textBaseline: 'top',
-                                y: 22,
-                                x: 316,
-                                lineHeight: 60,
-                                text: cfg.avgName + ":" + cfg.avgTime,
-                                fill: '#000',
-                            },
-                            name: 'title',
-                        });
 
 
                         if (cfg.nodeLevel > 0) {
                             group.addShape('marker', {
                                 attrs: {
-                                    x: 184,
-                                    y: 70,
-                                    r: 26,
+                                    x: 9184,
+                                    y: 170,
+                                    r: 126,
                                     cursor: 'pointer',
                                     symbol: cfg.collapse ? G6.Marker.expand : G6.Marker.collapse,
                                     stroke: '#666',
-                                    lineWidth: 1,
+                                    lineWidth: 2,
                                 },
                                 name: 'collapse-icon',
                             });
@@ -133,7 +109,7 @@ class CardNode extends React.Component {
                                     y: 85,
                                     x: 24 + index * 190,
                                     lineHeight: 40,
-                                    text: item.zoneName + "--?1--",
+                                    text: item.zoneName + "--1--" + item.judge,
                                     fill: 'rgba(0,0,0, 0.4)',
                                     fontSize: 28
                                 },
@@ -145,10 +121,11 @@ class CardNode extends React.Component {
                                 attrs: {
                                     textBaseline: 'top',
                                     y: 142,
-                                    x: 34 + index * 190,
+                                    x: 24 + index * 190,
                                     lineHeight: 40,
-                                    text: item.cpu + "--?2--" + item.zone,
+                                    text: item.cpu + "--2--" + item.zone,
                                     fill: '#595959',
+                                    fontSize: 28
                                 },
                                 name: item.zoneName,
                             });
@@ -158,11 +135,12 @@ class CardNode extends React.Component {
                             group.addShape('text', {
                                 attrs: {
                                     textBaseline: 'top',
-                                    y: 172,
-                                    x: 44 + index * 160,
+                                    y: 182,
+                                    x: 24 + index * 190,
                                     lineHeight: 40,
-                                    text: item.judge + "--?3--" + item.value,
+                                    text: item.judge + "--3--" + item.value,
                                     fill: '#595959',
+                                    fontSize: 28
                                 },
                                 name: item.judge,
                             });
