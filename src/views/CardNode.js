@@ -203,7 +203,6 @@ class CardNode extends React.Component {
 
             graph.on('node:click', (evt) => {
                 const item = evt.item; // 被操作的节点 item
-                alert(item._cfg.model.name)
 
 
                 this.setState({ alt: item._cfg.model });
@@ -222,8 +221,15 @@ class CardNode extends React.Component {
     render() {
         return (
 
-            <div>
-                { JSON.stringify(this.state.alt)}
+            <div className="content"> 
+                <h1>
+                    {this.state.alt.name ? this.state.alt.name : "pls click node"}
+                </h1>
+                <div>
+                  { JSON.stringify(this.state.alt ) }
+
+                </div>
+                
                 <div id="cdn" className="content"> cardNode </div>
             </div>
         )
