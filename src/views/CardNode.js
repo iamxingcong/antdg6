@@ -26,10 +26,15 @@ class CardNode extends React.Component {
 
             const postdata = await response.json()
 
-            this.setState({
+            if(postdata){
+                this.setState({
 
-                items: postdata.data
-            });
+                    items: postdata.data
+                });
+            } else {
+                return false
+            }
+            
 
 
             console.log(this.state.items)

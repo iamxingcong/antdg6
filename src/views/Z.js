@@ -17,10 +17,15 @@ class Z extends React.Component {
       const response = await fetch('https://gw.alipayobjects.com/os/basement_prod/6cae02ab-4c29-44b2-b1fd-4005688febcb.json')
       const postdata = await response.json()
 
-      this.setState({
-        isLoaded: true,
-        items: postdata
-      });
+      if(postdata){
+        this.setState({
+          isLoaded: true,
+          items: postdata
+        });
+      } else {
+        return 
+      }
+      
     }
 
     getRates();
