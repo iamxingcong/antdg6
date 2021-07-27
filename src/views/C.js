@@ -28,36 +28,25 @@ class C extends React.Component {
           
           controlPoints: false,
           modes: {
-            default: ['drag-canvas', 'drag-node'],
+            default: [
+              'drag-combo',
+              'drag-node',
+              'drag-canvas',
+              {
+                type: 'collapse-expand-combo',
+                relayout: false,
+              },
+            ],
           },
           layout: {
             type: 'dagre',
-            nodeSize: [40, 20],
-            nodesep: 25,
-            direction: "TB",
+            sortByCombo: false,
             ranksep: 30,
-            
+            nodesep: 40,
           },
-          animate: true,
-          defaultNode: {
-            size: [40, 20],
-            type: 'rect',
-            style: {
-              lineWidth: 2,
-              stroke: '#5B8FF9',
-              fill: '#C6E5FF',
-            },
-          },
-          defaultEdge: {
-            size: 1,
-            color: '#e2e2e2',
-            style: {
-              endArrow: {
-                path: 'M 0,0 L 8,4 L 8,-4 Z',
-                fill: '#e2e2e2',
-              },
-            },
-          },
+         
+
+
         });
         graph.data(postdata);
         graph.render();

@@ -24,31 +24,27 @@ function Graph() {
       
       graph = new G6.Graph({
         container: ReactDOM.findDOMNode(ref.current),
-        width: 1200,
+        width: window.screen.width,
         height: 800,
         modes: {
-          default: ['drag-canvas'],
+          default: [
+            'drag-combo',
+            'drag-node',
+            'drag-canvas',
+            {
+              type: 'collapse-expand-combo',
+              relayout: false,
+            },
+          ],
         },
         layout: {
           type: 'dagre',
-          direction: 'LR',
+          sortByCombo: false,
+          ranksep: 30,
+          nodesep: 40,
         },
-        defaultNode: {
-          type: 'node',
-          labelCfg: {
-            style: {
-              fill: '#000000A6',
-              fontSize: 10,
-            },
-          },
-          style: {
-            stroke: '#72CC4A',
-            width: 150,
-          },
-        },
-        defaultEdge: {
-          type: 'polyline',
-        },
+      
+        
       });
 
 
@@ -56,9 +52,13 @@ function Graph() {
       graph.render();
     }
 
-    getRates();
 
-  }, []);
+   
+      getRates();
+    }, []);
+   
+
+
   return <div ref={ref}></div>;
 }
  
