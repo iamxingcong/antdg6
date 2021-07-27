@@ -12,7 +12,10 @@ class C extends React.Component {
 
 
     async function getRates() {
+     
       const response = await fetch('https://gw.alipayobjects.com/os/basement_prod/6cae02ab-4c29-44b2-b1fd-4005688febcb.json')
+    //  const response = await fetch('https://gw.alipayobjects.com/os/antvdemo/assets/data/relations.json')
+     
       const postdata = await response.json()
        
  
@@ -30,9 +33,9 @@ class C extends React.Component {
           layout: {
             type: 'dagre',
             nodeSize: [40, 20],
-            nodesep: 15,
+            nodesep: 25,
             direction: "TB",
-            ranksep: 20,
+            ranksep: 30,
             
           },
           animate: true,

@@ -18,7 +18,7 @@ class CardNode extends React.Component {
 
     componentDidMount() {
 
-
+        var graph = null
 
         const getRates = async () => {
 
@@ -185,47 +185,45 @@ class CardNode extends React.Component {
                 'single-node',
             );
 
+            if(!graph){
 
+                graph = new G6.Graph({
+                    container: document.getElementById('cdn'),
+                    width: window.screen.width,
+                    height: 1900,
 
-            const graph = new G6.Graph({
-                container: document.getElementById('cdn'),
-                width: window.screen.width,
-                height: 1900,
-
-                layout: {
-                    type: 'force',
-                    nodeSpacing: 30,
-                    nodeSize: 500,
-                    preventOverlap: true,
-                    fontSize: 45,
-                },
-                modes: {
-                    default: [
-                    // 支持的 behavior
-                   { default: ['drag-canvas', 'drag-node', 'zoom-canvas']},
-                   { edit: ['click-select']},
-                    'activate-node' ]
-                  },
-                 
-                defaultNode: {
-                    type: 'card-node',
-
-                },
-                defaultEdge: {
-                    type: 'polyline',
-                    style: {
-                        radius: 20,
-                        offset: 45,
-                        endArrow: true,
-                        lineWidth: 1,
-                        stroke: '#C2C8D5',
+                    layout: {
+                        type: 'force',
+                        nodeSpacing: 30,
+                        nodeSize: 500,
+                        preventOverlap: true,
+                        fontSize: 45,
                     },
-                },
-                fitView: true,
-            });
+                    modes: {
+                        default: [
+                        // 支持的 behavior
+                    { default: ['drag-canvas', 'drag-node', 'zoom-canvas']},
+                    { edit: ['click-select']},
+                        'activate-node' ]
+                    },
+                    
+                    defaultNode: {
+                        type: 'card-node',
 
-
-
+                    },
+                    defaultEdge: {
+                        type: 'polyline',
+                        style: {
+                            radius: 20,
+                            offset: 45,
+                            endArrow: true,
+                            lineWidth: 1,
+                            stroke: '#C2C8D5',
+                        },
+                    },
+                    fitView: true,
+                });
+       
 
 
             graph.data(this.state.items);
@@ -239,8 +237,11 @@ class CardNode extends React.Component {
                 this.setState({ alt: item._cfg.model });
 
             });
+         }
 
-        }
+
+
+     }
 
 
 
