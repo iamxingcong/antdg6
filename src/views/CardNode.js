@@ -200,11 +200,8 @@ class CardNode extends React.Component {
                         fontSize: 45,
                     },
                     modes: {
-                        default: [
-                        // 支持的 behavior
-                    { default: ['drag-canvas', 'drag-node', 'zoom-canvas']},
-                    { edit: ['click-select']},
-                        'activate-node' ]
+                        default: [ 'drag-canvas', 'drag-node', 'zoom-canvas' ]
+                      
                     },
                     
                     defaultNode: {

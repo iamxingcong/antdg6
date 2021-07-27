@@ -31,6 +31,7 @@ function Graph() {
             'drag-combo',
             'drag-node',
             'drag-canvas',
+            'zoom-canvas',
             {
               type: 'collapse-expand-combo',
               relayout: false,
@@ -55,6 +56,8 @@ function Graph() {
 
    
       getRates();
+
+      
     }, []);
    
 

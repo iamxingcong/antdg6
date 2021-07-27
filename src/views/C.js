@@ -32,6 +32,8 @@ class C extends React.Component {
               'drag-combo',
               'drag-node',
               'drag-canvas',
+              
+              'zoom-canvas',
               {
                 type: 'collapse-expand-combo',
                 relayout: false,

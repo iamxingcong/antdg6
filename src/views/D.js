@@ -20,7 +20,7 @@ class D extends React.Component {
 
       var graph = new G6.Graph({
         container: document.getElementById('oxt'),
-        width: 1500,
+        width: window.screen.width,
         height: 1900,
 
 
@@ -41,7 +41,19 @@ class D extends React.Component {
         },
 
         animate: true,
-        modes: 'zoom-canvas',
+        modes:  {
+          default: [
+          'drag-combo',
+          'drag-node',
+          'drag-canvas',
+          
+          'zoom-canvas',
+          {
+            type: 'collapse-expand-combo',
+            relayout: false,
+          },
+        ]
+      },
         defaultNode: {
           size: 56,
           anchorPoints: [
