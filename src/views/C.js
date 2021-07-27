@@ -33,7 +33,7 @@ class C extends React.Component {
             nodesep: 15,
             direction: "TB",
             ranksep: 20,
-            center: [ 1700, 700 ], 
+            
           },
           animate: true,
           defaultNode: {
