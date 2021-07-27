@@ -40,7 +40,7 @@ class CardNode extends React.Component {
             console.log(this.state.items)
 
 
-            G6.registerBehavior('activate-node', {
+            G6.registerBehavior('behaviorName', {
                 getDefaultCfg() {
                     return {
                       multiple: true
@@ -54,10 +54,10 @@ class CardNode extends React.Component {
                   };
                 },
                 onNodeClick(evt) {
-                 console.log('click')
+                 console.log(evt)
                 },
                 onEdgeClick(evt) {
-                  console.log("lick edge")
+                  console.log(evt)
                 },
                 onMouseMove(evt) {
                 //  console.log("mouse")
@@ -200,7 +200,7 @@ class CardNode extends React.Component {
                         fontSize: 45,
                     },
                     modes: {
-                        default: [ 'drag-canvas', 'drag-node', 'zoom-canvas' ]
+                        default: [ 'drag-canvas', 'drag-node', 'zoom-canvas' , "behaviorName" ]
                       
                     },
                     
